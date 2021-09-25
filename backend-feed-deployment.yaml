@@ -14,63 +14,22 @@ spec:
     spec:
       containers:
         - name: backend-feed
-          image: odili/udagram-api-feed:v1
+          image: odili/udagram-api-feed
           imagePullPolicy: Always
           resources:
             requests:
-              memory: '64Mi'
+              memory: '256Mi'
               cpu: '250m'
             limits:
-              memory: '1024Mi'
+              memory: '2048Mi'
               cpu: '500m'
           ports:
             - containerPort: 8080
-          env:
-            - name: URL
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: URL
-            - name: AWS_BUCKET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_BUCKET
-            - name: AWS_PROFILE
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_PROFILE
-            - name: AWS_REGION
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_REGION
-            - name: JWT_SECRET
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: JWT_SECRET
-            - name: POSTGRES_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRES_DB
-            - name: POSTGRES_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: POSTGRES_HOST
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRES_PASSWORD
-            - name: POSTGRES_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: env-secret
-                  key: POSTGRES_USERNAME
+          envFrom:
+            - configMapRef:
+                name: env-config
+            - secretRef:
+                name: env-secret
           volumeMounts:
             - name: aws-secret
               mountPath: /root/.aws/
