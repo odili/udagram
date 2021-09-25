@@ -16,10 +16,10 @@ before_script:
 #  Build and Tagging
 script:
   - docker --version # print the version for logging
-  - docker build -t odili/udagram-api-feed:v1 ./udagram-api-feed
-  - docker build -t odili/udagram-api-user:v1 ./udagram-api-user
-  - docker build -t odili/udagram-frontend:v1 ./udagram-frontend
-  - docker build -t odili/reverseproxy:v1 ./udagram-reverseproxy
+  - docker build -t odili/udagram-api-feed:latest ./udagram-api-feed
+  - docker build -t odili/udagram-api-user:latest ./udagram-api-user
+  - docker build -t odili/udagram-frontend:latest ./udagram-frontend
+  - docker build -t odili/reverseproxy:latest ./udagram-reverseproxy
 
 # Push to DockerHub
 after_success:
