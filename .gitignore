@@ -1,2 +1,5 @@
 set_env.sh
 node_modules
+env-configmap.yaml
+env-secret.yaml
+aws-secret.yaml

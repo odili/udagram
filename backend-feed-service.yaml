@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: feed-service
+spec:
+  selector:
+    app: backend-feed
+  ports:
+    - name: '8080'
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
