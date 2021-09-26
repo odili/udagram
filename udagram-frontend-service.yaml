@@ -7,7 +7,4 @@ spec:
   selector:
     app: udagram-frontend
   ports:
-    - name: '8100'
-      protocol: TCP
-      port: 8100
-      targetPort: 80
+    - port: 80
